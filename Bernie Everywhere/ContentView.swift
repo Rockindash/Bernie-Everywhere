@@ -7,30 +7,54 @@
 
 import SwiftUI
 import RealityKit
+import ARKit
 
 struct ContentView : View {
+    @State var placeObject = false
+    
     var body: some View {
-        return ARViewContainer().edgesIgnoringSafeArea(.all)
+        return ARViewContainer(isPlacementEnabled: $placeObject).edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    print(placeObject)
+                }
     }
 }
 
 struct ARViewContainer: UIViewRepresentable {
+    @Binding var isPlacementEnabled: Bool
     
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)
         
-        // Load the "Box" scene from the "Experience" Reality File
-        let boxAnchor = try! Experience.loadBox()
+        let config = ARWorldTrackingConfiguration()
+        config.planeDetection = [.vertical,.horizontal]
+        config.environmentTexturing = .automatic
         
-        // Add the box anchor to the scene
-        arView.scene.anchors.append(boxAnchor)
+        if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
+            config.sceneReconstruction = .mesh
+        }
+        
+        arView.debugOptions = [ARView.DebugOptions.showSceneUnderstanding]
+        arView.session.run(config)
         
         return arView
         
     }
     
-    func updateUIView(_ uiView: ARView, context: Context) {}
+    func updateUIView(_ uiView: ARView, context: Context) {
+        if isPlacementEnabled {
+            let plane = try! ModelEntity.loadModel(named: "toy_biplane.usdz")
+            let anchor = AnchorEntity(plane: .any)
+            anchor.addChild(plane)
+            uiView.scene.addAnchor(anchor)
+            DispatchQueue.main.async {
+                isPlacementEnabled = false
+            }
+        }
+    }
+    
+    
     
 }
 
