@@ -13,6 +13,8 @@
 		A65B390725BCAABB00087979 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65B390625BCAABB00087979 /* Preview Assets.xcassets */; };
 		A65B390A25BCAABB00087979 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65B390825BCAABB00087979 /* LaunchScreen.storyboard */; };
 		A65B391525BCB76800087979 /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A65B391425BCB76800087979 /* toy_biplane.usdz */; };
+		A65B391825BCD10800087979 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = A65B391725BCD10800087979 /* Experience.rcproject */; };
+		A65B391B25BCD2C100087979 /* Bernie.png in Resources */ = {isa = PBXBuildFile; fileRef = A65B391A25BCD2C100087979 /* Bernie.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A65B390925BCAABB00087979 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A65B390B25BCAABB00087979 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A65B391425BCB76800087979 /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
+		A65B391725BCD10800087979 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
+		A65B391A25BCD2C100087979 /* Bernie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bernie.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				A65B38FD25BCAAB900087979 /* AppDelegate.swift */,
+				A65B391725BCD10800087979 /* Experience.rcproject */,
 				A65B38FF25BCAAB900087979 /* ContentView.swift */,
 				A65B390325BCAABB00087979 /* Assets.xcassets */,
 				A65B390825BCAABB00087979 /* LaunchScreen.storyboard */,
@@ -78,6 +83,7 @@
 		A65B391325BCB75400087979 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A65B391A25BCD2C100087979 /* Bernie.png */,
 				A65B391425BCB76800087979 /* toy_biplane.usdz */,
 			);
 			path = Models;
@@ -142,6 +148,7 @@
 			files = (
 				A65B390A25BCAABB00087979 /* LaunchScreen.storyboard in Resources */,
 				A65B390725BCAABB00087979 /* Preview Assets.xcassets in Resources */,
+				A65B391B25BCD2C100087979 /* Bernie.png in Resources */,
 				A65B391525BCB76800087979 /* toy_biplane.usdz in Resources */,
 				A65B390425BCAABB00087979 /* Assets.xcassets in Resources */,
 			);
@@ -156,6 +163,7 @@
 			files = (
 				A65B390025BCAAB900087979 /* ContentView.swift in Sources */,
 				A65B38FE25BCAAB900087979 /* AppDelegate.swift in Sources */,
+				A65B391825BCD10800087979 /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

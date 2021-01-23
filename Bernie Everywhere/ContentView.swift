@@ -15,7 +15,7 @@ struct ContentView : View {
     var body: some View {
         return ARViewContainer(isPlacementEnabled: $placeObject).edgesIgnoringSafeArea(.all)
                 .onTapGesture {
-                    print(placeObject)
+                    placeObject = true
                 }
     }
 }
@@ -44,10 +44,19 @@ struct ARViewContainer: UIViewRepresentable {
     
     func updateUIView(_ uiView: ARView, context: Context) {
         if isPlacementEnabled {
-            let plane = try! ModelEntity.loadModel(named: "toy_biplane.usdz")
-            let anchor = AnchorEntity(plane: .any)
-            anchor.addChild(plane)
-            uiView.scene.addAnchor(anchor)
+//            let plane = try! ModelEntity.loadModel(named: "toy_biplane.usdz")
+//            let anchor = AnchorEntity(plane: .any)
+//            anchor.addChild(plane)
+//            uiView.scene.addAnchor(anchor)
+            
+            let mesh = MeshResource.generatePlane(width: 1, height: 1)
+            var material = SimpleMaterial(color: .clear, isMetallic: false)
+            material.baseColor = try! .texture(.load(named: "Bernie.png"))
+            let modelEntity = ModelEntity(mesh: mesh, materials: [material])
+            let anchorEntity = AnchorEntity(plane: .any)
+            anchorEntity.addChild(modelEntity)
+            uiView.scene.addAnchor(anchorEntity)
+            
             DispatchQueue.main.async {
                 isPlacementEnabled = false
             }
