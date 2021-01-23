@@ -49,7 +49,7 @@ struct ARViewContainer: UIViewRepresentable {
 //            anchor.addChild(plane)
 //            uiView.scene.addAnchor(anchor)
             
-            let mesh = MeshResource.generatePlane(width: 1, height: 1)
+            let mesh = MeshResource.generatePlane(width: 0.5, height: 1)
             var material = SimpleMaterial(color: .clear, isMetallic: false)
             material.baseColor = try! .texture(.load(named: "Bernie.png"))
             let modelEntity = ModelEntity(mesh: mesh, materials: [material])
