@@ -37,6 +37,11 @@ struct ARViewContainer: UIViewRepresentable {
             config.sceneReconstruction = .mesh
         }
         
+        // People Occlusions
+        if ARWorldTrackingConfiguration.supportsFrameSemantics(.personSegmentationWithDepth) {
+            config.frameSemantics.insert(.personSegmentationWithDepth)
+        }
+        
         // Addign debug options
         arView.debugOptions = [ARView.DebugOptions.showSceneUnderstanding]
         arView.session.run(config)
