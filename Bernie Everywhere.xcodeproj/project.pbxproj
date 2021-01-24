@@ -12,6 +12,7 @@
 		A65B390425BCAABB00087979 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65B390325BCAABB00087979 /* Assets.xcassets */; };
 		A65B390725BCAABB00087979 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65B390625BCAABB00087979 /* Preview Assets.xcassets */; };
 		A65B390A25BCAABB00087979 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65B390825BCAABB00087979 /* LaunchScreen.storyboard */; };
+		A669A4F925BD6E2B007ACB22 /* Bernie.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A669A4F825BD6E2B007ACB22 /* Bernie.usdz */; };
 		A697E0A525BD156F00751FC1 /* Bernie.png in Resources */ = {isa = PBXBuildFile; fileRef = A697E0A425BD156F00751FC1 /* Bernie.png */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		A65B390625BCAABB00087979 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A65B390925BCAABB00087979 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A65B390B25BCAABB00087979 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A669A4F825BD6E2B007ACB22 /* Bernie.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Bernie.usdz; sourceTree = "<group>"; };
 		A697E0A425BD156F00751FC1 /* Bernie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bernie.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				A697E0A425BD156F00751FC1 /* Bernie.png */,
+				A669A4F825BD6E2B007ACB22 /* Bernie.usdz */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A669A4F925BD6E2B007ACB22 /* Bernie.usdz in Resources */,
 				A65B390A25BCAABB00087979 /* LaunchScreen.storyboard in Resources */,
 				A65B390725BCAABB00087979 /* Preview Assets.xcassets in Resources */,
 				A697E0A525BD156F00751FC1 /* Bernie.png in Resources */,

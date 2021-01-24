@@ -43,7 +43,7 @@ struct ARViewContainer: UIViewRepresentable {
         }
         
         // Addign debug options
-        arView.debugOptions = [ARView.DebugOptions.showSceneUnderstanding]
+//        arView.debugOptions = [ARView.DebugOptions.showSceneUnderstanding]
         arView.session.run(config)
         return arView
     }
@@ -51,16 +51,10 @@ struct ARViewContainer: UIViewRepresentable {
     // MARK: - Adding MVP to the Scene
     func updateUIView(_ uiView: ARView, context: Context) {
         if isPlacementEnabled {
-            var material = UnlitMaterial()
-            let resource = try? TextureResource.load(named: "Bernie.png")
-            let mesh = MeshResource.generatePlane(width: 0.5, height: 1)
-            material.baseColor = MaterialColorParameter.texture(resource!)
-            material.tintColor = UIColor.white.withAlphaComponent(0.99)
-            
-            let modelEntity = ModelEntity(mesh: mesh, materials: [material])
-            let anchorEntity = AnchorEntity(plane: .any)
-            anchorEntity.addChild(modelEntity)
-            uiView.scene.addAnchor(anchorEntity)
+            let plane = try! ModelEntity.loadModel(named: "Bernie.usdz")
+            let anchor = AnchorEntity(plane: .any)
+            anchor.addChild(plane)
+            uiView.scene.addAnchor(anchor)
             
             DispatchQueue.main.async {
                 isPlacementEnabled = false
