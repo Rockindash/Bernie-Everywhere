@@ -44,14 +44,12 @@ struct ARViewContainer: UIViewRepresentable {
     
     func updateUIView(_ uiView: ARView, context: Context) {
         if isPlacementEnabled {
-//            let plane = try! ModelEntity.loadModel(named: "toy_biplane.usdz")
-//            let anchor = AnchorEntity(plane: .any)
-//            anchor.addChild(plane)
-//            uiView.scene.addAnchor(anchor)
-            
+            let resource = try? TextureResource.load(named: "Bernie.png")
             let mesh = MeshResource.generatePlane(width: 0.5, height: 1)
-            var material = SimpleMaterial(color: .clear, isMetallic: false)
-            material.baseColor = try! .texture(.load(named: "Bernie.png"))
+            var material = UnlitMaterial()
+            material.baseColor = MaterialColorParameter.texture(resource!)
+            material.tintColor = UIColor.white.withAlphaComponent(0.99)
+            
             let modelEntity = ModelEntity(mesh: mesh, materials: [material])
             let anchorEntity = AnchorEntity(plane: .any)
             anchorEntity.addChild(modelEntity)
@@ -62,9 +60,6 @@ struct ARViewContainer: UIViewRepresentable {
             }
         }
     }
-    
-    
-    
 }
 
 #if DEBUG
