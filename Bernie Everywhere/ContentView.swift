@@ -11,7 +11,6 @@ import ARKit
 
 struct ContentView : View {
     @State var placeObject = false
-    
     var body: some View {
         return ARViewContainer(isPlacementEnabled: $placeObject).edgesIgnoringSafeArea(.all)
                 .onTapGesture {
@@ -23,30 +22,32 @@ struct ContentView : View {
 struct ARViewContainer: UIViewRepresentable {
     @Binding var isPlacementEnabled: Bool
     
+    // MARK: - View Setup
     func makeUIView(context: Context) -> ARView {
         
+        // Plane Detection Setup
         let arView = ARView(frame: .zero)
-        
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.vertical,.horizontal]
         config.environmentTexturing = .automatic
         
+        // For LIDAR improvements
         if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
             config.sceneReconstruction = .mesh
         }
         
+        // Addign debug options
         arView.debugOptions = [ARView.DebugOptions.showSceneUnderstanding]
         arView.session.run(config)
-        
         return arView
-        
     }
     
+    // MARK: - Adding MVP to the Scene
     func updateUIView(_ uiView: ARView, context: Context) {
         if isPlacementEnabled {
+            var material = UnlitMaterial()
             let resource = try? TextureResource.load(named: "Bernie.png")
             let mesh = MeshResource.generatePlane(width: 0.5, height: 1)
-            var material = UnlitMaterial()
             material.baseColor = MaterialColorParameter.texture(resource!)
             material.tintColor = UIColor.white.withAlphaComponent(0.99)
             
@@ -62,10 +63,8 @@ struct ARViewContainer: UIViewRepresentable {
     }
 }
 
-#if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
-#endif
