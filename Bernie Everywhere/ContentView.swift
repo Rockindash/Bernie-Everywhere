@@ -5,12 +5,13 @@
 //  Created by Amol Kumar on 2021-01-23.
 //
 
+import ARKit
 import SwiftUI
 import RealityKit
-import ARKit
 
 struct ContentView : View {
     @State var placeObject = false
+    
     var body: some View {
         return ARViewContainer(isPlacementEnabled: $placeObject).edgesIgnoringSafeArea(.all)
                 .onTapGesture {
@@ -25,13 +26,13 @@ struct ARViewContainer: UIViewRepresentable {
     // MARK: - View Setup
     func makeUIView(context: Context) -> ARView {
         
-        // Plane Detection Setup
+        // Plane Detection Configuration
         let arView = ARView(frame: .zero)
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.vertical,.horizontal]
         config.environmentTexturing = .automatic
         
-        // For LIDAR improvements
+        // Adding mesh for device with LIDAR support
         if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
             config.sceneReconstruction = .mesh
         }
