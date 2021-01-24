@@ -45,6 +45,7 @@ struct ARViewContainer: UIViewRepresentable {
         // Addign debug options
 //        arView.debugOptions = [ARView.DebugOptions.showSceneUnderstanding]
         arView.session.run(config)
+        
         return arView
     }
     
@@ -56,6 +57,13 @@ struct ARViewContainer: UIViewRepresentable {
             anchor.addChild(plane)
             uiView.scene.addAnchor(anchor)
             
+            let light = Lighting()
+            light.orientation = simd_quatf(angle: .pi/8, axis: [0, 1, 0])
+            
+            let directLightAnchor = AnchorEntity()
+            directLightAnchor.addChild(light)
+            uiView.scene.addAnchor(directLightAnchor)
+            
             DispatchQueue.main.async {
                 isPlacementEnabled = false
             }
@@ -66,5 +74,16 @@ struct ARViewContainer: UIViewRepresentable {
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+class Lighting: Entity, HasDirectionalLight, HasAnchoring {
+
+    required init() {
+        super.init()
+
+        self.light = DirectionalLightComponent(color: .white,
+                                           intensity: 1000,
+                                    isRealWorldProxy: true)
     }
 }
